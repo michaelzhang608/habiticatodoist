@@ -10,6 +10,13 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/complete", methods=["POST"])
+def complete():
+    print(request.get_json())
+    return "OK"
+
+
+
 # Run Flask if file is interpreted
 if __name__ == "__main__":
     os.environ["FLASK_APP"] = "application.py"
