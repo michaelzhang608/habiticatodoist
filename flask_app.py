@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import os
+from habitica_app import complete_habitica_todo
 
 # Flask setup
 app = Flask(__name__)
@@ -12,7 +13,11 @@ def index():
 
 @app.route("/complete", methods=["POST"])
 def complete():
-    print(request.get_json())
+    data = request.get_json()
+    event_name = data["event_data"]["content"]
+    
+    complete_habitica_todo(event_name)
+
     return "OK"
 
 
