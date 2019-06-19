@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import os
 from habitica_app import complete_habitica_todo
+import subprocess
 
 # Flask setup
 app = Flask(__name__)
@@ -15,7 +16,6 @@ def index():
 def complete():
     data = request.get_json()
     event_name = data["event_data"]["content"]
-    
     complete_habitica_todo(event_name)
 
     return "OK"
@@ -25,7 +25,6 @@ def complete():
 # Run Flask if file is interpreted
 if __name__ == "__main__":
     os.environ["FLASK_APP"] = "application.py"
-
     try:
         current = subprocess.check_output(["lsof", "-t", "-i:5000"])
         current = max(current.decode("utf-8").split("\n"))
