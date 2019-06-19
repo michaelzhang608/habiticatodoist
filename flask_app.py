@@ -11,14 +11,21 @@ app.config['SECRET_KEY'] = "DefaultSecret"
 def index():
     return render_template("index.html")
 
-
-@app.route("/complete", methods=["POST"])
-def complete():
+@app.route("/updatereward", methods=["POST"])
+def update_reward():
     data = request.get_json()
-    event_name = data["event_data"]["content"]
-    complete_habitica_todo(event_name)
+    print(data)
+    return "", 200
 
-    return "OK"
+
+
+# Deprecated
+# @app.route("/complete", methods=["POST"])
+# def complete():
+#     data = request.get_json()
+#     event_name = data["event_data"]["content"]
+#     complete_habitica_todo(event_name)
+#     return "OK"
 
 
 
