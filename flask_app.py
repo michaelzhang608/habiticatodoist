@@ -15,6 +15,7 @@ def index():
 def habitica_webhook():
     data = request.get_json()
     type = data["task"]["type"]
+    print(data)
     print(f"Received type {type}")
 
     if type == "reward":
