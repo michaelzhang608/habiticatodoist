@@ -11,12 +11,15 @@ app.config['SECRET_KEY'] = "DefaultSecret"
 def index():
     return render_template("index.html")
 
-@app.route("/updatereward", methods=["POST"])
+@app.route("/habiticawebhook", methods=["POST"])
 def update_reward():
     data = request.get_json()
-    print(data)
-    return "", 200
+    type = data["task"]["type"]
 
+    if type == "reward":
+        update_reward(data["task"]["id"], data["task"]["value"] * 2)
+
+    return "", 200
 
 
 # Deprecated

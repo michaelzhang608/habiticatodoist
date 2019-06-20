@@ -16,3 +16,9 @@ def complete_habitica_todo(taskname):
     id = data["data"]["id"]
     r = requests.post("https://habitica.com/api/v3/tasks/"+ id +"/score/up", headers=auth_headers)
     print(r)
+
+def update_reward(task_id, new_value):
+    data = {
+        value: new_value
+    }
+    requests.put("https://habitica.com/api/v3/tasks/" + task_id, data=data)
