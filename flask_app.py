@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import os
-from habitica_app import complete_habitica_todo
+from habitica_app import complete_habitica_todo, update_reward
 import subprocess
 
 # Flask setup

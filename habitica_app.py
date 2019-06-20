@@ -21,4 +21,5 @@ def update_reward(task_id, new_value):
     data = {
         value: new_value
     }
-    requests.put("https://habitica.com/api/v3/tasks/" + task_id, data=data)
+    requests.put("https://habitica.com/api/v3/tasks/" + task_id, data=data, headers=auth_headers)
+    print("Updated reward value from put request")
