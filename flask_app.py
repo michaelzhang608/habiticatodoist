@@ -12,11 +12,13 @@ def index():
     return render_template("index.html")
 
 @app.route("/habiticawebhook", methods=["POST"])
-def update_reward():
+def habitica_webhook():
     data = request.get_json()
     type = data["task"]["type"]
+    print(f"Received type {type}")
 
     if type == "reward":
+        print("Updating reward")
         update_reward(data["task"]["id"], data["task"]["value"] * 2)
 
     return "", 200
